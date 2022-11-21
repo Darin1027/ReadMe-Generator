@@ -1,8 +1,14 @@
 // packages needed for this application
+// * added 52 packages, and audited 53 packages in 3s
+// * 16 packages are looking for funding
+// * run `npm fund` for details
+// * found 0 vulnerabilities
 const inquirer = require("inquirer");
 const fs = require("fs");
+const util = require("util");
+const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
+// An array of questions for user input
 const questions = [
   {
     type: "input",
