@@ -5,7 +5,6 @@
 // * found 0 vulnerabilities
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // Acceptance Criteria
@@ -37,11 +36,11 @@ const questions = [
     message: "Input project description.",
     name: "description",
   },
-  {
-    type: "input",
-    message: "Input project table of contents.",
-    name: "table",
-  },
+  // {
+  //   type: "input",
+  //   message: "Input project table of contents.",
+  //   name: "table",
+  // },
   {
     type: "input",
     message: "Input project installation instructions.",
@@ -53,9 +52,16 @@ const questions = [
     name: "usage",
   },
   {
-    type: "choices",
+    type: "list",
     message: "Input project license.",
-    choices: "N/A",
+    choices: [
+      "MIT",
+      "Unlicense",
+      "GNU GPL v2",
+      "Apache 2.0 License",
+      "GNU GPL v3",
+      "The Do What the Fuck You Want to Public License",
+    ],
     name: "license",
   },
   {
@@ -65,30 +71,45 @@ const questions = [
   },
   {
     type: "input",
-    message: "Input project tests.",
+    message: "Input project tests needed.",
     name: "tests",
   },
   {
+    // WHEN I enter my GitHub username
+    // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+    // WHEN I enter my email address
+    // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     type: "input",
-    message: "Input project questions.",
-    name: "questions",
+    message: "Input your Github URL.",
+    name: "github",
+  },
+  {
+    type: "input",
+    message: "Input your email.",
+    name: "email",
   },
 ];
 
 //  function to write README file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, JSON.stringify(data, null, "\t"), (err) =>
-    err ? console.log(err) : console.log("Success!")
-  );
+function writeToFile(generatedReadme, data) {
+  fs.writeFile(generatedReadme, data, function (err) {
+    if (err) {
+      return console.log(err);
+    } else {
+      console.log("success");
+    }
+  });
 }
 
 //  function to initialize app
 function init() {
   inquirer.prompt(questions).then(function (data) {
-    writeToFile("readme.md", generateMarkdown(data));
+    writeToFile("Readmegenerated.md", generateMarkdown(data));
     console.log(data);
   });
 }
 
 // Function call to initialize app
 init();
+
+module.exports = questions;

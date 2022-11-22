@@ -1,6 +1,6 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-// MIT, Other, GPLv2, Apache, GPLv3
+// MIT, Unlicense, GNU GPL v2, Apache 2.0 License, GNU GPL v3, The Do What the Fuck You Want to Public License
 function renderLicenseBadge(license) {
   let licenseBadge = "";
   if (license === "MIT") {
@@ -52,26 +52,28 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderlicenseSection(license) {
-  let license = "";
-  if ((license = "N/A")) {
+  if ((license = "")) {
     licenseSection = "";
   } else {
-    licenseSection = `License: $(license)`;
+    licenseSection = `License: ${license}`;
   }
   return licenseSection;
 }
 
 // generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 
+// WHEN I click on the links in the Table of Contents
+// THEN I am taken to the corresponding section of the README
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
-# ${renderLicenseBadge(data.license)}
-# ${renderLicenseLink(data.license)}
-# ${renderlicenseSection(data.license)}
+## ${renderlicenseSection(data.license)}
+* ${renderLicenseBadge(data.license)}
+* ${renderLicenseLink(data.license)}
 
-# Table of contents:
+## Table of contents:
 * [License](#license)
 * [Description](#description)
 * [Installation](#installation)
@@ -80,23 +82,26 @@ function generateMarkdown(data) {
 * [Tests](#tests)
 * [Questions](#questions)
 
-# Description:
+## Description:
 ${data.description}
 
-# Installation:
-${data.installation}
+## Installation:
+${data.instructions}
 
-# Usage:
+## Usage:
 ${data.usage}
 
-# Contributing:
-${data.Contributing}
+## Contributors:
+${data.contributors}
 
-# Tests:
-${data.Tests}
+## Tests:
+${data.tests}
 
 # Questions:
-${data.Questions}
+## Reach out to me through Github for any questions:
+${data.github}
+## Or send an email if that is your preferred method of communication:
+${data.email}
 `;
 }
 
