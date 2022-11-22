@@ -53,8 +53,9 @@ const questions = [
     name: "usage",
   },
   {
-    type: "input",
+    type: "choices",
     message: "Input project license.",
+    choices: "N/A",
     name: "license",
   },
   {
