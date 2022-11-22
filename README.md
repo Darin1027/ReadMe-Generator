@@ -44,3 +44,7 @@ https://github.com/Darin1027
 ## Or send an email if that is your preferred method of communication:
 
 dplb1027@gmail.com
+
+## Link to sample readme video:
+
+https://watch.screencastify.com/v/DZj0sbTeLHhShn6saCU0
