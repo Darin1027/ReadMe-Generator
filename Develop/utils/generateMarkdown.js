@@ -21,12 +21,33 @@ function renderLicenseBadge(license) {
   } else if (license === "The Do What the Fuck You Want to Public License") {
     licenseBadge =
       "[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)";
+  } else {
+    badge = "";
   }
+  return licenseBadge;
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  let licenseLink = "";
+  if (license === "MIT") {
+    licenseLink = "https://opensource.org/licenses/MIT";
+  } else if (license === "Unlicense") {
+    licenseLink = "https://unlicense.org/";
+  } else if (license === "GNU GPL v2") {
+    licenseLink = "https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html";
+  } else if (license === "Apache 2.0 License") {
+    licenseLink = "https://opensource.org/licenses/Apache-2.0";
+  } else if (license === "GNU GPL v3") {
+    licenseLink = "https://www.gnu.org/licenses/gpl-3.0";
+  } else if (license === "The Do What the Fuck You Want to Public License") {
+    licenseLink = "http://www.wtfpl.net/about/";
+  } else {
+    licenseLink = "";
+  }
+  return licenseLink;
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
